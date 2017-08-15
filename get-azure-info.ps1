@@ -37,6 +37,7 @@ $policy = new-object 'Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy
 $sas = $cbc.GetSharedAccessSignature($policy, $policyName)  
 $sas_token = $sas.Substring(1)
 
+#create sql credential
 $container_name = $container.Name
 $link1="https://storageAccountName.blob.core.windows.net/$container_name"
 $Params =@("link1=$link1","sas_token=$sas_token")
@@ -46,6 +47,5 @@ WHERE name = `$(link1))
 CREATE CREDENTIAL `$(link1) WITH IDENTITY = 'SHARED ACCESS SIGNATURE'  
 ,SECRET = `$(sas_token));"
 Invoke-Sqlcmd -Query $query -Variable $Params -ServerInstance (HOSTNAME.EXE) -QueryTimeout 666
-
-
-Get-AzureStorageBlob -Container $cbc.Name -Context $storageContext|sort LastModified|select Name
+#list of blobs in container
+Get-AzureStorageBlob -Container $cbc.Name -Context $storageContext|select Name
