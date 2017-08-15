@@ -6,15 +6,10 @@ Invoke-Sqlcmd -Query $query_backup -Variable $params
 
 
 $query_restore="USE [master]
+ALTER DATABASE [AdventureWorks2014] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+RESTORE DATABASE [AdventureWorks2014] FROM  URL = N'https://testsqldiag606.blob.core.windows.net/backupcontainer/adventureworks2014_backup_2017_08_15_104335.bak' WITH  FILE = 1,
+NOUNLOAD,  REPLACE,  STATS = 5
+ALTER DATABASE [AdventureWorks2014] SET MULTI_USER
 GO
-ALTER DATABASE [`$(db_name)] SET  SINGLE_USER WITH ROLLBACK IMMEDIATE
-GO
-USE [master]
-GO
-EXEC master.dbo.sp_detach_db @dbname = N'`$(db_name)'
-GO
-RESTORE DATABASE `$(db_name) FROM URL = '`$(url)'
-with
-replace
-GO"
+"
 Invoke-Sqlcmd -Query $query_restore -Variable $params
