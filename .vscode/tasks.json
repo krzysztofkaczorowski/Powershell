@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "build hello world",
+            "type": "shell",
+            "command": "C:\\MinGW\\bin\\g++",
+            "args": [
+                "-g", "C:\\Users\\Krzysztof\\Documents\\GitHub\\Powershell\\helloworld.cpp","-o","C:\\Users\\Krzysztof\\Documents\\GitHub\\Powershell\\a.exe"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        }
+    ]
+}

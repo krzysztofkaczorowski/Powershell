@@ -1,7 +1,7 @@
 # adds an authenticated Azure account for use in the session   
-Login-AzureRmAccount
+#Login-AzureRmAccount
 $subscriptionName = 'Developer Program Benefit'
-$resourceGroupName = 'test-sql'
+$resourceGroupName = 'test1'
 $locationName = 'West Europe'
 # set the tenant, subscription and environment for use in the rest of   
 Set-AzureRmContext -SubscriptionName $subscriptionName   
