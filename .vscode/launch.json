@@ -51,6 +51,22 @@
             "request": "launch",
             "name": "PowerShell Interactive Session",
             "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "Python",
+            "type": "python",
+            "pythonPath":"${config:python.pythonPath}", 
+            "request": "launch",
+            "stopOnEntry": true,
+            "console": "integratedTerminal",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ],
+            "env": {"name":"value"}
         }
     ]
 }
